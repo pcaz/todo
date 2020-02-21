@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<ToDoList version="1.1">
+		<RecurringTasks />
+		<Projects />
+		<Tasks>
+			<Task>
+				<Id>1</Id>
+				<Name>Essai1</Name>
+				<Description />
+				<Note />
+				<Priority>0</Priority>
+				<Category>none</Category>
+				<State>NOT_STARTED</State>
+				<EstimatedTime>PT30M</EstimatedTime>
+				<DueDateTime>2013-02-04T18:00:00.000+01:00</DueDateTime>
+				<BeginningDateTime>2013-02-02T00:00:00.000+01:00</BeginningDateTime>
+				<EndDateTime>2013-02-02T00:00:00.000+01:00</EndDateTime>
+			</Task>
+		</Tasks>
+	</ToDoList>
+	<Categories>
+		<Category>none</Category>
+	</Categories>
+</root>

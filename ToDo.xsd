@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="com.neotec.todo" targetNamespace="com.neotec.todo">
+
+
+	<xsd:element name="root" type="ToDoList" />
+
+	<xsd:complexType name="ToDoList">
+		<xsd:sequence>
+			<xsd:element name="RecurringTasks" type="RecurringTask"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="Projects" type="Project" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xsd:element name="Tasks" type="TaskTemplate" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="version" type="xsd:integer" />
+	</xsd:complexType>
+
+
+	<xsd:complexType name="Task">
+		<xsd:sequence>
+			<!-- identifiant de la tâche -->
+			<xsd:element name="Id" type="xsd:long" />
+			<!-- nom de la tâche -->
+			<xsd:element name="Name" type="xsd:string" />
+			<!-- description (optionnel) -->
+			<xsd:element name="Description" type="xsd:string"
+				minOccurs="0" />
+			<!-- notes (optionnel) -->
+			<xsd:element name="Note" type="xsd:string" minOccurs="0" />
+			<!-- prorité de la tâche (optionnel) -->
+			<xsd:element name="Priority" type="Priority" minOccurs="0" />
+			<!-- catégorie de la tâche (optionnel) -->
+			<xsd:element name="Category" type="xsd:string" minOccurs="0" />
+			<!-- identifiant du projet -->
+			<xsd:element name="Project" type="Project" />
+			<!-- état courant -->
+			<xsd:element name="State" type="State" />
+			<!-- ressources nécessaires et utilisées (optionnel) -->
+			<xsd:element name="Resources" type="xsd:string"
+				minOccurs="0" maxOccurs="unbounded" />
+			<!-- durée estimée pour la tâche (optionnel) -->
+			<xsd:element name="EstimatedTime" type="xsd:duration"
+				minOccurs="0" />
+			<!-- date de fin butée -->
+			<xsd:element name="DueDateTime" type="xsd:dateTime"
+				minOccurs="0" />
+			<!-- date de début (automatique) -->
+			<xsd:element name="BeginningDateTime" type="xsd:dateTime"
+				minOccurs="0" />
+			<!-- date de fin (automatique) -->
+			<xsd:element name="EndDateTime" type="xsd:dateTime"
+				minOccurs="0" />
+			<!-- tâche dont la fin est un prérequis pour le début de celle ci -->
+			<xsd:element name="Prerequisite" type="Task" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+		<!-- version du logiciel -->
+		<xsd:attribute name="version" type="xsd:integer" />
+	</xsd:complexType>
+
+	<xsd:complexType name="RecurringTask">
+		<xsd:sequence>
+			<!-- Identifiant de la tâche -->
+			<xsd:element name="Id" type="xsd:long" />
+			<!-- nom de la tâche -->
+			<xsd:element name="Name" type="xsd:string" />
+			<!-- description (optionnel) -->
+			<xsd:element name="Description" type="xsd:string"
+				minOccurs="0" />
+			<!-- date de début de la période des tâches -->
+			<xsd:element name="BeginningDateTime" type="xsd:dateTime" />
+			<!-- date de fin de la période des tâches -->
+			<xsd:element name="EndDateTime" type="xsd:dateTime"
+				minOccurs="0" />
+			<!-- recurrence -->
+			<xsd:element name="Recurring" type="xsd:duration" />
+			<!-- modèle pour créer les tâches -->
+			<xsd:element name="TaskTemplate" type="TaskTemplate" />
+			<!-- tâches composant le projet -->
+			<xsd:sequence>
+				<xsd:element name="Tasks" type="Task" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:sequence>
+		<xsd:attribute name="version" type="xsd:integer" />
+	</xsd:complexType>
+
+
+	<xsd:complexType name="TaskTemplate">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" />
+			<!-- catégorie de la tâche (opionnel) -->
+			<xsd:element name="Category" type="xsd:string" minOccurs="0" />
+			<!-- ressources nécessaires et utilisées (optionnel) -->
+			<xsd:element name="Resources" type="xsd:string"
+				minOccurs="0" maxOccurs="unbounded" />
+			<!-- durée estimée pour la tâche (optionnel) -->
+			<xsd:element name="EstimatedTime" type="xsd:duration"
+				minOccurs="0" />
+			<!-- date de fin butée -->
+			<xsd:element name="DueDateTime" type="xsd:dateTime"
+				minOccurs="0" />
+		</xsd:sequence>
+		<!-- version du logiciel -->
+		<xsd:attribute name="version" type="xsd:integer" />
+	</xsd:complexType>
+
+	<xsd:complexType name="Project">
+		<xsd:sequence>
+			<!-- identifiant du projet -->
+			<xsd:element name="Id" type="xsd:long" />
+			<!-- nom du projet -->
+			<xsd:element name="Name" type="xsd:string" />
+			<!-- description (optionnel) -->
+			<xsd:element name="Description" type="xsd:string"
+				minOccurs="0" />
+			<!-- date de fin désirée -->
+			<xsd:element name="DueDateTime" type="xsd:dateTime"
+				minOccurs="0" />
+			<!-- date de début -->
+			<xsd:element name="BeginningDateTime" type="xsd:dateTime"
+				minOccurs="0" />
+			<!-- tâche composant le projet -->
+			<xsd:sequence>
+				<xsd:element name="Tasks" type="Task" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:sequence>
+		<xsd:attribute name="version" type="xsd:integer" />
+	</xsd:complexType>
+
+	<xsd:simpleType name="State">
+		<xsd:restriction base="xsd:string">
+			<!-- la tâche n'est pas entamée -->
+			<xsd:enumeration value="NotStarted" />
+			<!-- la tâche est commencée -->
+			<xsd:enumeration value="Started" />
+			<!-- la tâche est en attente de la fin d'un prérequis" -->
+			<xsd:enumeration value="Waiting" />
+			<!-- la tâche est terminée -->
+			<xsd:enumeration value="Finished" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+
+	<xsd:simpleType name="Priority">
+		<xsd:restriction base="xsd:integer">
+			<!-- valeur 0, pas de prorité -->
+			<!-- valeur de 1 à 3 priorité normale -->
+			<!-- valeur de 4 à 6 priorité importante -->
+			<!-- valeur de 7 à 9 priorité bloquante -->
+			<!-- valeur de 10 priorité absolue -->
+			<xsd:minInclusive value="0" />
+			<xsd:maxInclusive value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

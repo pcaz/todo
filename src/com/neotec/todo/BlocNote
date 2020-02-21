@@ -1,0 +1,12 @@
+On recherche les tâches par:
+- le nom pour la recherche par l'utilisateur, le nom n'est pas unique
+- la DueDate pour gérer les projets et les gestion des priorités
+
+
+Essai infructueux d'utilisation du MultiValueMap.
+Le HashMap est désordonné ce qui ne permet pas le tri pas DueDateTime 
+Je n'ai pas réussi à mettre en oeuvre la constructeur avec un TreeMap.
+
+Utilisation du Joda Time pour essayer d'éviter l'usine à gaz java (a creuser cependant) 
+
+ATTENTION: a légalité des valeurs dans treeContainer.

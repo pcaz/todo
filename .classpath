@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="lib" path="main.jar"/>
+	<classpathentry kind="lib" path="ToDo.jar"/>
+	<classpathentry kind="lib" path="/home/pascaz10/.m2/repository/jdom2/jdom-2.0.6.jar"/>
+	<classpathentry kind="lib" path="/opt/eclipse-installer/plugins/org.eclipse.swt.gtk.linux.x86_64_3.106.0.v20170608-0516.jar"/>
+	<classpathentry kind="lib" path="/opt/eclipse-installer/plugins/org.eclipse.swt_3.106.0.v20170608-0516.jar"/>
+	<classpathentry kind="lib" path="/opt/eclipse-installer/plugins/org.eclipse.jface.databinding_1.8.100.v20170503-1507.jar"/>
+	<classpathentry kind="lib" path="/opt/eclipse-installer/plugins/org.eclipse.jface.text_3.12.0.v20170523-1043.jar"/>
+	<classpathentry kind="lib" path="/opt/eclipse-installer/plugins/org.eclipse.jface_3.13.0.v20170503-1507.jar"/>
+	<classpathentry kind="lib" path="/opt/eclipse-installer/plugins/org.eclipse.core.commands_3.9.0.v20170530-1048.jar"/>
+	<classpathentry kind="lib" path="/opt/eclipse-installer/plugins/org.eclipse.equinox.bidi_1.1.0.v20160728-1031.jar"/>
+	<classpathentry kind="lib" path="/opt/eclipse-installer/plugins/org.eclipse.equinox.common_3.9.0.v20170207-1454.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
